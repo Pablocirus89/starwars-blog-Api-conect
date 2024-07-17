@@ -10,7 +10,7 @@ export const ContenedorPersonajes = () => {
     useEffect(() => {
         actions.obtenerPersonajes()
     }, [])
-console.log(store.characters);
+    console.log(store.characters);
     return (
         <div className="text-center mt-3">
             <div>
@@ -18,7 +18,6 @@ console.log(store.characters);
             </div>
             <div className="card-group">
                 <div className="d-flex flex-row overflow-scroll">
-
 
                     {store.characters.map((item, index) => (
                         <Personajes

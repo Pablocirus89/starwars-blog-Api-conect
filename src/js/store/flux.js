@@ -3,7 +3,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 
 			characters: [],
-			 planets: [],
+			planets: [],
+			character: {},
+			planet: {},
+			favoritesList: [],
 
 		},
 		actions: {
@@ -40,9 +43,49 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			
-		},
-	}
+			obtenerPersonajeDetails: async (id) => {
+				try {
+					const response = await fetch(`https://swapi.dev/api/people/${id}`, {
+						method: `GET`,
+					})
+					if (response.ok) {
+						const data = await response.json()
+						setStore({ character: data })
+					}
+				}
+				catch (error) {
+					console.log(error);
+					return false;
+				}
+			},
+
+			obtenerPlanetaDetails: async (id) => {
+				try {
+					const response = await fetch(`https://swapi.dev/api/planets/${id}`, {
+						method: `GET`,
+					})
+					if (response.ok) {
+						const data = await response.json()
+						setStore({ planet: data })
+					}
+				}
+				catch (error) {
+					console.log(error);
+					return false;
+				}
+			},
+
+			agregarFavoritesList: (name) => {
+				if (getStore().favoritesList.includes(name)) {
+					const newList = getStore().favoritesList.filter((item) => item != name)
+					setStore({ favoritesList: newList })
+				}
+			} /* else {
+				setStore({ favoritesList: [...getStore().favoritesList, name] });
+				
+			} */
+		}
+	};
 };
 
 
