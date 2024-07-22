@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export const Planetas = ({ name, population, terrain, id }) => {
 
+    const { store, actions } = useContext(Context)
+
+    const isFavorite = (favoriteName) => {
+        if (store.favoritesList.includes(favoriteName)) {
+            return true
+        }
+        return false
+    }
     return (
         <div className="text-center m-2">
             <div className="row">
@@ -19,6 +28,9 @@ export const Planetas = ({ name, population, terrain, id }) => {
                                         Learn more!
                                     </button>
                                 </Link>
+                                <button type="button" onClick={() => actions.agregarFavoritesList(name)} className="btn btn-primary">
+                                    <i className={isFavorite(name) ? "fa fa-heart text-danger" : "fa fa-heart"}></i>
+                                </button>
                             </div>
                         </div>
                     </div>

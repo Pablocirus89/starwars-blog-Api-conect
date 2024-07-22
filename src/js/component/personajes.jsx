@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 
 export const Personajes = ({ name, gender, hair_color, eye_color, id }) => {
 
-    const { actions } = useContext(Context)
+    const { store, actions } = useContext(Context)
 
-    useEffect(() => {
-        actions.agregarFavoritesList()
-    }, [])
+    const isFavorite = (favoriteName) => {
+        if(store.favoritesList.includes(favoriteName)) {
+            return true
+        }
+        return false
+    }
 
 
     return (
@@ -29,7 +32,7 @@ export const Personajes = ({ name, gender, hair_color, eye_color, id }) => {
                                     </button>
                                 </Link>
                                 <button type="button" onClick={() => actions.agregarFavoritesList(name)} className="btn btn-primary">
-                                    <i className="fa fa-heart"></i>
+                                    <i className={isFavorite(name) ? "fa fa-heart text-danger" : "fa fa-heart"}></i>
                                 </button>
                             </div>
 

@@ -77,13 +77,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			agregarFavoritesList: (name) => {
 				if (getStore().favoritesList.includes(name)) {
-					const newList = getStore().favoritesList.filter((item) => item != name)
-					setStore({ favoritesList: newList })
+					getActions().eliminarFavorite(name)
+				} else {
+					setStore({ favoritesList: [...getStore().favoritesList, name] });
 				}
-			} /* else {
-				setStore({ favoritesList: [...getStore().favoritesList, name] });
-				
-			} */
+			},
+			eliminarFavorite: (name) => {
+				const newList = getStore().favoritesList.filter((item) => item != name)
+				setStore({ favoritesList: newList })
+			}
 		}
 	};
 };

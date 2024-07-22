@@ -15,9 +15,9 @@ export const ContenedorPlanetas = () => {
     return (
         <div className="text-center mt-3">
             <div>
-                <h1>Planets</h1>
+                <h1 z-3>Planets</h1>
             </div>
-            <div className="card-group">
+            <div className="card-group z-3">
                 <div className="d-flex flex-row overflow-scroll">
                     {store.planets.map((item, index) => (
                         <Planetas

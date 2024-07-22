@@ -14,9 +14,9 @@ export const ContenedorPersonajes = () => {
     return (
         <div className="text-center mt-3">
             <div>
-                <h1>Characters</h1>
+                <h1 className="border border-warning z-3 position-absolute">Characters</h1>
             </div>
-            <div className="card-group">
+            <div className="card-group z-3">
                 <div className="d-flex flex-row overflow-scroll">
 
                     {store.characters.map((item, index) => (
