@@ -5,13 +5,16 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context)
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar bg-black">
 			<Link to="/">
 				<img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Star_Wars_logo.png" style={{ width: "150px", flex: "none", margin: "5px" }} alt="Home icon" />
 			</Link>
+			<Link to="/create-card">
+			<button type="button" class="btn btn-outline-warning">Your creations</button>
+			</Link>		
 			<div className="ml-auto">
 				<div className="dropdown">
-					<button className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<button className="btn btn-outline-warning dropdown-toggle me-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Favourites {store.favoritesList.length}
 					</button>
 					<ul className="dropdown-menu dropdown-menu-end" onClick={(e)=> e.stopPropagation()}>

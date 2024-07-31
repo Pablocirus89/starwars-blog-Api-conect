@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { Personajes } from "../component/personajes.jsx";
 
 
+
 export const ContenedorPersonajes = () => {
 
     const { store, actions } = useContext(Context)
@@ -12,13 +13,12 @@ export const ContenedorPersonajes = () => {
     }, [])
     console.log(store.characters);
     return (
-        <div className="text-center mt-3">
+        <div className="text-center">
             <div>
-                <h1 className="border border-warning z-3 position-absolute">Characters</h1>
+                <h1 className="fw-semibold text-info text-opacity-50">Characters</h1>
             </div>
-            <div className="card-group z-3">
+            <div className="card-group">
                 <div className="d-flex flex-row overflow-scroll">
-
                     {store.characters.map((item, index) => (
                         <Personajes
                             key={index}
