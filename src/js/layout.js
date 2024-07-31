@@ -14,6 +14,8 @@ import { Planetas } from "./component/planetas.jsx";
 import { PersonajesDetails } from "./views/personajes-details.jsx";
 import { PlanetDetails } from "./views/planet-details.jsx";
 import { CreateCard } from "./views/create-card.jsx";
+import { CrearPersonaje } from "./component/crear-personaje.jsx";
+import { CrearPlaneta } from "./component/crear-planeta.jsx";
 
 //create your first component
 const Layout = () => {
@@ -31,6 +33,8 @@ const Layout = () => {
 						<Route path="/personajes-details/:id" element={<PersonajesDetails />} />
 						<Route path="/planet-details/:id" element={<PlanetDetails />} />
 						<Route path="/create-card" element={<CreateCard />} />
+						<Route path="/crear-personaje" element={<CrearPersonaje />} />
+						<Route path="/crear-planeta" element={<CrearPlaneta />} />
 						<Route path="/personajes" element={<Personajes />} />
 						<Route path="/planetas" element={<Planetas />} />
 						<Route path="/demo" element={<Demo />} />
