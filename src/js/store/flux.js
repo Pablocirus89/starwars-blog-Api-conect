@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -11,9 +13,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
+			crearPersonaje: async (name, gender, eye_color) => {
+				try {
+					const response = await axios.post(process.env.BACKEND_URL+'/new_character', {
+						"name": name,
+						"gender": gender,
+						"eye_color": eye_color
+					})
+					alert(response.data)
+					
+
+				} catch (error) {
+					console.log(error);
+					return false;
+				}
+			},
+
+			crearPlaneta: async (name, population, diameter) => {
+				try {
+					const response = await axios.post(process.env.BACKEND_URL+'/new_character', {
+						"name": name,
+						"population": population,
+						"diameter": diameter
+					})
+
+					setStore(response.data.planets)
+
+				} catch (error) {
+					console.log(error);
+					return false;
+				}
+			},
+
 			obtenerPersonajes: async () => {
 				try {
-					const response = await fetch(`https://swapi.dev/api/people/`, {
+					const response = await fetch(process.env.BACKEND_URL+'/all_characters', {
 						method: `GET`,
 					})
 					if (response.ok) {
@@ -29,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			obtenerPlanetas: async () => {
 				try {
-					const response = await fetch(`https://swapi.dev/api/planets/`, {
+					const response = await fetch(process.env.BACKEND_URL+'/all_planets', {
 						method: `GET`,
 					})
 					if (response.ok) {

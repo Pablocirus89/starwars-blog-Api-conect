@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
+import { Context } from "../store/appContext";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 
 export const CrearPersonaje = () => {
+
+	const { store, actions } = useContext(Context)
 
 	const formik = useFormik({
 		initialValues: {
@@ -17,7 +20,7 @@ export const CrearPersonaje = () => {
 			eye_color: Yup.string().required('Required')
 		}),
 		onSubmit: values => {
-			alert(JSON.stringify(values, null, 2));
+			actions.crearPersonaje(values.name, values.gender, values.eye_color)
 		},
 	});
 
